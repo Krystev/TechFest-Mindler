@@ -1,11 +1,12 @@
 <resources>
-    <string name="choose_test">Избери тест</string>
-    <string name="city">Град</string>
-    <string name="school">Училище</string>
-    <string name="subject">Предмет</string>
-    <string name="teacher">Учител</string>
-    <string name="enter">Влез</string>
-    <string name="hint_student_name">Име на студент</string>
+    <string name="choose_test">Choose test</string>
+    <string name="choose_city">Choose city</string>
+    <string name="choose_school">Choose school</string>
+    <string name="choose_subject">Choose subject</string>
+    <string name="choose_teacher">Choose teacher</string>
+    <string name="enter">Enter competition</string>
+    <string name="hint_student_name">Name of student</string>
+    <string name="error_no_username">Please enter your username!</string>
     <string name="app_name">MiNDLER</string>
     <string name="add_question">add question</string>
     <string name="enter_test">enter test</string>
