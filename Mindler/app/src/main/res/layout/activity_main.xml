@@ -14,7 +14,7 @@
         android:textSize="45sp" />
 
     <Button
-        android:id="@+id/btn_start_test"
+        android:id="@+id/btn_add_questions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
