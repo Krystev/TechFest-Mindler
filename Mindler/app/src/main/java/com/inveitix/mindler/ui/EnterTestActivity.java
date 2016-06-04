@@ -15,6 +15,8 @@ import android.widget.Spinner;
 import com.inveitix.mindler.CustomSpinnerAdapter;
 import com.inveitix.mindler.R;
 
+import com.inveitix.mindler.R;
+
 public class EnterTestActivity extends AppCompatActivity {
 
     private EditText edtStudentName;

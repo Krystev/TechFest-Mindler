@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Mindler</string>
     <string name="choose_test">Избери тест</string>
     <string name="city">Град</string>
     <string name="school">Училище</string>
@@ -7,5 +6,10 @@
     <string name="teacher">Учител</string>
     <string name="enter">Влез</string>
     <string name="hint_student_name">Име на студент</string>
-
+    <string name="app_name">MiNDLER</string>
+    <string name="add_question">add question</string>
+    <string name="start_game">start game</string>
+    <string name="enter_test">enter test</string>
+    <string name="go_learn">Go Learn</string>
+    <string name="lear_play_explore">Lear! Play! Explore!</string>
 </resources>
