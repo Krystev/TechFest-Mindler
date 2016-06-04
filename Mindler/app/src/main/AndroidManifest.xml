@@ -16,7 +16,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.AddQuestionsActivity" />
-        <activity android:name=".ui.StartTestActivity"></activity>
+        <activity android:name=".ui.StartTestActivity" />
+        <activity android:name=".ui.ChooseQuestionsActivity" />
+        <activity android:name=".ui.ChooseTestActivity"></activity>
     </application>
 
 </manifest>
