@@ -13,12 +13,6 @@
         android:scaleType="centerCrop"
         android:src="@drawable/black_board2"/>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_height="465dp"
-        android:src="@drawable/down"/>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -91,5 +85,11 @@
             android:text="Answer 4"
             android:textSize="20sp"/>
     </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_height="465dp"
+        android:src="@drawable/down"/>
 
 </RelativeLayout>
