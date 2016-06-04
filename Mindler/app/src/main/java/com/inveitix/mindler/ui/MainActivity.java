@@ -6,7 +6,6 @@ import android.os.Bundle;
 
 import com.inveitix.mindler.R;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -19,14 +18,14 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick(R.id.btn_add_questions)
-    public void onQuestionsAddClicked() {
-        startActivity(new Intent(this, AddQuestionsActivity.class));
+    @OnClick(R.id.btn_create_test)
+    public void onCreateTestClicked() {
+        startActivity(new Intent(this, StartTestActivity.class));
     }
 
     @OnClick(R.id.btn_start_test)
-    public void onStartTestClicked() {
-        startActivity(new Intent(this, StartTestActivity.class));
+    public void onEnterTestClicked() {
+        startActivity(new Intent(this, EnterTestActivity.class));
     }
 
 }
