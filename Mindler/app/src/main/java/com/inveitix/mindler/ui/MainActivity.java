@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, StartTestActivity.class));
     }
 
-    @OnClick(R.id.btn_enter_test)
+    @OnClick(R.id.btn_start_test)
     public void onEnterTestClicked() {
         startActivity(new Intent(this, EnterTestActivity.class));
     }
