@@ -8,8 +8,12 @@
     <string name="hint_student_name">Име на студент</string>
     <string name="app_name">MiNDLER</string>
     <string name="add_question">add question</string>
-    <string name="start_game">start game</string>
     <string name="enter_test">enter test</string>
-    <string name="go_learn">Go Learn</string>
-    <string name="lear_play_explore">Lear! Play! Explore!</string>
+    <string name="go_learn">Play!</string>
+    <string name="lear_play_explore">Learn! Play! Explore!</string>
+    <string name="intro_text">Innovative platform for students, which helps them learn while competing with classmates</string>
+    <string name="start_game">Start Game</string>
+    <string name="be_the_best_in_your_class">Be the best in your class.</string>
+    <string name="challenge_your_classmates">Challenge your classmates.</string>
+    <string name="create_test">Create Game</string>
 </resources>
