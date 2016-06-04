@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Mindler</string>
+    <string name="choose_test">Избери тест</string>
+    <string name="city">Град</string>
+    <string name="school">Училище</string>
+    <string name="subject">Предмет</string>
+    <string name="teacher">Учител</string>
+    <string name="enter">Влез</string>
+    <string name="hint_student_name">Име на студент</string>
+
 </resources>
