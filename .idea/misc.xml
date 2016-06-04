@@ -11,6 +11,8 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" assert-keyword="true" jdk-15="true" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+<<<<<<< HEAD
+=======
   <component name="masterDetails">
     <states>
       <state key="ProjectJDKs.UI">
@@ -27,4 +29,5 @@
       </state>
     </states>
   </component>
+>>>>>>> d0d12647694ab85670dface28b871753e11acd62
 </project>
