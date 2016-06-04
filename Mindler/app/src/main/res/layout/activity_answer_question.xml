@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ProgressBar
+        android:id="@+id/prg_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="1000"
+        android:layout_margin="8dp"
+        style="?android:attr/progressBarStyleHorizontal"/>
+
+    <TextView
+        android:id="@+id/txt_current_position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Current position 2 / 15"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/txt_question"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:text="If the answer to this question is the second answer, which is the correct answer to this question?"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:layout_margin="8dp"
+        android:textSize="20sp"
+        android:padding="8dp"/>
+
+    <Button
+        android:id="@+id/btn_answer_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:text="asddasddsddasdasadsdasdasd"
+        android:singleLine="true"
+        android:padding="16dp"
+        android:textSize="20sp"/>
+
+    <Button
+        android:id="@+id/btn_answer_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:text="Answer 2"
+        android:padding="16dp"
+        android:textSize="20sp"/>
+
+    <Button
+        android:id="@+id/btn_answer_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:text="Answer 3"
+        android:padding="16dp"
+        android:textSize="20sp"/>
+
+    <Button
+        android:id="@+id/btn_answer_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:text="Answer 4"
+        android:padding="16dp"
+        android:textSize="20sp"/>
+
+</LinearLayout>
