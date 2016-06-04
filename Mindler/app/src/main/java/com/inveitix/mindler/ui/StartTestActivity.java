@@ -1,13 +1,15 @@
-package com.inveitix.mindler;
+package com.inveitix.mindler.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.inveitix.mindler.R;
+
+public class StartTestActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_start_test);
     }
 }
