@@ -18,11 +18,6 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick(R.id.btn_add_questions)
-    public void onQuestionsAddClicked() {
-        startActivity(new Intent(this, AddQuestionsActivity.class));
-    }
-
     @OnClick(R.id.btn_create_test)
     public void onCreateTestClicked() {
         startActivity(new Intent(this, StartTestActivity.class));
