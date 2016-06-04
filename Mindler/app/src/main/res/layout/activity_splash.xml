@@ -58,7 +58,6 @@
         android:backgroundTint="@color/colorPrimary"
         android:text="@string/go_learn"
         android:textColor="@android:color/white"
-
         />
 </RelativeLayout>
 
