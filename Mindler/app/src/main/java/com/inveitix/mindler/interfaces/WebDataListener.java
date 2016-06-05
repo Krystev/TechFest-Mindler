@@ -6,5 +6,5 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface WebDataListener {
-    void cityListReceived(ArrayList<City> cities);
+    void listReceivedistReceived(Object result);
 }

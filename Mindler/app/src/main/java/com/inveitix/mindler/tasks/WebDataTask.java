@@ -4,7 +4,6 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.inveitix.mindler.cmn.City;
 import com.inveitix.mindler.cmn.DataTransferObject;
 import com.inveitix.mindler.constants.Constants;
@@ -16,22 +15,34 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.lang.reflect.Type;
 import java.net.Socket;
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-public class WebDataTask extends AsyncTask<Void, WebDataListener, ArrayList<City>> {
+public class WebDataTask extends AsyncTask<Void, WebDataListener, Object> {
     private static final String TAG = "AsyncTask";
     WebDataListener listener;
+    Socket socket = null;
+
+    public Socket getSocket(){
+        if(socket == null)
+            try {
+                socket = new Socket(Constants.SERVER_IP_ADDRESS, Constants.SERVER_PORT);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        return  socket;
+    }
     public WebDataTask(WebDataListener listener) {
         this.listener = listener;
     }
 
     @Override
-    protected ArrayList<City> doInBackground(Void... params) {
-        ArrayList<City> cities = null;
+    protected Object doInBackground(Void... params) {
+        Object result = null;
         try {
-            Socket socket = new Socket(Constants.SERVER_IP_ADDRESS, Constants.SERVER_PORT);
+            socket = this.getSocket();
             OutputStream os = socket.getOutputStream();
 
             Log.e(TAG, "Sending:");
@@ -43,12 +54,12 @@ public class WebDataTask extends AsyncTask<Void, WebDataListener, ArrayList<City
 
             Log.e(TAG, "Receiving");
             InputStream is = socket.getInputStream();
-            String result = convertStreamToString(is);
+            String resultStr = convertStreamToString(is);
             Log.e(TAG, "Service result:" + result);
-            DataTransferObject dataTransferObject1 = gson.fromJson(result, DataTransferObject.class);
+            DataTransferObject dataTransferObject1 = gson.fromJson(resultStr, DataTransferObject.class);
 
             if (dataTransferObject1 != null) {
-                cities = jsonToArray(dataTransferObject1.getData());
+                result = (stringToArray(dataTransferObject1.getData(), City[].class));
             } else {
                 Log.e(TAG, "Result null");
             }
@@ -58,19 +69,18 @@ public class WebDataTask extends AsyncTask<Void, WebDataListener, ArrayList<City
         } catch (Exception e) {
             Log.e(TAG, "Ops", e);
         }
-        return cities;
+        return result;
     }
 
     @Override
-    protected void onPostExecute(ArrayList<City> cities) {
-        super.onPostExecute(cities);
-        listener.cityListReceived(cities);
+    protected void onPostExecute(Object result) {
+        super.onPostExecute(result);
+        listener.listReceivedistReceived(result);
     }
 
-    static <T> ArrayList<T> jsonToArray(String jsonArray) {
-        Type listType = new TypeToken<ArrayList<T>>() {
-        }.getType();
-        return new Gson().fromJson(jsonArray, listType);
+    public static <T> List<T> stringToArray(String s, Class<T[]> clazz) {
+        T[] arr = new Gson().fromJson(s, clazz);
+        return Arrays.asList(arr); //or return Arrays.asList(new Gson().fromJson(s, clazz)); for a one-liner
     }
 
     static String convertStreamToString(java.io.InputStream is) {

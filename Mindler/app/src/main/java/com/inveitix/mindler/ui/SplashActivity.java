@@ -18,6 +18,7 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 
 import com.inveitix.mindler.R;
+import com.inveitix.mindler.WebHelper;
 import com.inveitix.mindler.interfaces.WebDataListener;
 import com.inveitix.mindler.cmn.City;
 
@@ -47,6 +48,7 @@ public class SplashActivity extends AppCompatActivity implements WebDataListener
     @OnClick(R.id.btn_login)
     public void onLoginClicked() {
        startActivity(new Intent(this, MainActivity.class));
+        WebHelper.getInstance().getCities(this);
     }
 
     @Override
@@ -89,8 +91,8 @@ public class SplashActivity extends AppCompatActivity implements WebDataListener
     }
 
     @Override
-    public void cityListReceived(ArrayList<City> cities2) {
-        cities = cities2;
+    public void listReceived(Object result) {
+        cities = (List<City>) result;
         Log.e(TAG, "citiessssss" );
         for (City city : cities) {
             Log.e(TAG, "ct:" + city.getName());

@@ -3,15 +3,17 @@ package com.inveitix.mindler;
 import android.util.Log;
 
 import com.inveitix.mindler.interfaces.WebDataListener;
-import com.inveitix.mindler.tasks.WebDataTask;
 
 
 public class WebHelper {
     private static final String TAG = "WebHelper";
     public static WebHelper instance;
     public static String data;
+    //static Socket socket;
 
     private WebHelper() {
+//        Thread thread = new Thread(new SendDataThread());
+//        thread.start();
     }
 
     public static WebHelper getInstance() {
@@ -23,6 +25,6 @@ public class WebHelper {
     }
 
     public void getCities(final WebDataListener listener) {
-        new WebDataTask(listener).execute();
+        new com.inveitix.mindler.WebDataTask(listener).execute();
     }
 }
