@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Button;
 
 import com.inveitix.mindler.R;
 
@@ -17,6 +18,8 @@ public class ChooseQuestionsActivity extends AppCompatActivity {
 
     @Bind(R.id.my_recycler_view_question)
     RecyclerView recViewQuestions;
+    @Bind(R.id.btn_start_test)
+    Button btnStartTest;
     QuestionAdapter questionAdapter;
     List<Questions> question = new ArrayList<>();
 

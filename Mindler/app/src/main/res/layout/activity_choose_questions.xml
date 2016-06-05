@@ -16,13 +16,19 @@
             android:layout_height="match_parent"
             android:background="#48000000" />
 
+        <Button
+            android:id="@+id/btn_start_test"
+            android:alpha="0.0"
+            android:layout_width="match_parent"
+            android:layout_height="96dp"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
             android:fontFamily="sans-serif"
-            android:text="Choose Questions"
+            android:text="Start Test"
             android:textColor="@android:color/white"
             android:textSize="45sp"
             android:textStyle="bold" />
