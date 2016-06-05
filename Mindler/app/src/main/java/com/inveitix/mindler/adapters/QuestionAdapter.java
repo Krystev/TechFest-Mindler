@@ -1,7 +1,6 @@
-package com.inveitix.mindler.ui;
+package com.inveitix.mindler.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,8 +10,8 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.inveitix.mindler.R;
+import com.inveitix.mindler.cmn.Question;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
@@ -23,10 +22,10 @@ import butterknife.ButterKnife;
  */
 public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHolder> {
 
-    List<Questions> question;
+    List<Question> question;
     Context context;
 
-    public QuestionAdapter(Context context, List<Questions> question) {
+    public QuestionAdapter(Context context, List<Question> question) {
         this.question = question;
         this.context = context;
     }
@@ -63,14 +62,21 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                    builder.setTitle(txtQuestion.getText().toString());
-                    builder.setMessage(question.get(position).getAnswerA() + "\n" +
-                            question.get(position).getAnswerB() + "\n" +
-                            question.get(position).getAnswerC() + "\n" +
-                            question.get(position).getAnswerD());
-                    builder.setCancelable(true);
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    LayoutInflater inflater = (LayoutInflater) context.getSystemService( Context.LAYOUT_INFLATER_SERVICE );
+                    builder.setView(inflater.inflate(R.layout.check_question, null));
                     builder.show();
+                    builder.setTitle(txtQuestion.getText().toString());
+                    builder.setCancelable(true);
+
+//                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+//                    builder.setTitle(txtQuestion.getText().toString());
+//                    builder.setMessage(question.get(position).getAnswerA() + "\n" +
+//                            question.get(position).getAnswerB() + "\n" +
+//                            question.get(position).getAnswerC() + "\n" +
+//                            question.get(position).getAnswerD());
+//                    builder.setCancelable(true);
+//                    builder.show();++
                 }
             });
         }

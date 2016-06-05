@@ -1,9 +1,9 @@
-package com.inveitix.mindler.ui;
+package com.inveitix.mindler.cmn;
 
 /**
  * Created by toshiba on 4.6.2016 г..
  */
-public class Questions {
+public class Question {
 
     String question;
     String answerA;

@@ -1,4 +1,4 @@
-package com.inveitix.mindler;
+package com.inveitix.mindler.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
