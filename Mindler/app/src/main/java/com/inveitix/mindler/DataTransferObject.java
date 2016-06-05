@@ -2,32 +2,32 @@ package com.inveitix.mindler;
 
 public class DataTransferObject {
 
-    private String queryType = "";
-    private String data = "";
-    private String clientUID = "";
+    private String QueryType = "";
+    private String Data = "";
+    private String ClientUID = "";
 
     public String getQueryType() {
-        return queryType;
+        return QueryType;
     }
 
     public void setQueryType(String queryType) {
-        this.queryType = queryType;
+        this.QueryType = queryType;
     }
 
     public String getData() {
-        return data;
+        return Data;
     }
 
     public void setData(String data) {
-        this.data = data;
+        this.Data = data;
     }
 
     public String getClientUID() {
-        return clientUID;
+        return ClientUID;
     }
 
     public void setClientUID(String clientUID) {
-        this.clientUID = clientUID;
+        this.ClientUID = clientUID;
     }
 
 }

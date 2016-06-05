@@ -5,22 +5,22 @@ package com.inveitix.mindler.cmn;
  */
 public class City {
 
-    private String name = "";
-    private int id = -1;
+    private String Name = "";
+    private int ID = -1;
 
     public String getName() {
-        return name;
+        return Name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.Name = name;
     }
 
     public int getId() {
-        return id;
+        return ID;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.ID = id;
     }
 }
