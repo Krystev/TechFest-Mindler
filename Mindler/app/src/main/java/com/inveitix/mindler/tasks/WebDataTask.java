@@ -23,59 +23,11 @@ public class WebDataTask extends AsyncTask<Void, WebDataListener, Object> {
     private static final String TAG = "AsyncTask";
     WebDataListener listener;
     Socket socket = null;
+    DataTransferObject dataTransferObject;
 
-    public Socket getSocket(){
-        if(socket == null)
-            try {
-                socket = new Socket(Constants.SERVER_IP_ADDRESS, Constants.SERVER_PORT);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        return  socket;
-    }
-    public WebDataTask(WebDataListener listener) {
+    public WebDataTask(WebDataListener listener, DataTransferObject dataTransferObject) {
         this.listener = listener;
-    }
-
-    @Override
-    protected Object doInBackground(Void... params) {
-        Object result = null;
-        try {
-            socket = this.getSocket();
-            OutputStream os = socket.getOutputStream();
-
-            Log.e(TAG, "Sending:");
-            DataTransferObject dataTransferObject = new DataTransferObject();
-            dataTransferObject.setData("-1");
-            dataTransferObject.setQueryType(QuerryTypes.GET_CITY);
-            Gson gson = new Gson();
-            os.write(gson.toJson(dataTransferObject).getBytes());
-
-            Log.e(TAG, "Receiving");
-            InputStream is = socket.getInputStream();
-            String resultStr = convertStreamToString(is);
-            Log.e(TAG, "Service result:" + result);
-            DataTransferObject dataTransferObject1 = gson.fromJson(resultStr, DataTransferObject.class);
-
-            if (dataTransferObject1 != null) {
-                result = (stringToArray(dataTransferObject1.getData(), City[].class));
-            } else {
-                Log.e(TAG, "Result null");
-            }
-            is.close();
-            socket.close();
-
-        } catch (Exception e) {
-            Log.e(TAG, "Ops", e);
-        }
-        return result;
-    }
-
-    @Override
-    protected void onPostExecute(Object result) {
-        super.onPostExecute(result);
-        listener.listReceivedistReceived(result);
+        this.dataTransferObject = dataTransferObject;
     }
 
     public static <T> List<T> stringToArray(String s, Class<T[]> clazz) {
@@ -102,5 +54,53 @@ public class WebDataTask extends AsyncTask<Void, WebDataListener, Object> {
         }
 
         return String.valueOf(sb);
+    }
+
+    public Socket getSocket() {
+        if (socket == null)
+            try {
+                socket = new Socket(Constants.SERVER_IP_ADDRESS, Constants.SERVER_PORT);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        return socket;
+    }
+
+    @Override
+    protected Object doInBackground(Void... params) {
+        Object result = null;
+        try {
+            socket = this.getSocket();
+            OutputStream os = socket.getOutputStream();
+
+            Log.e(TAG, "Sending:");
+            Gson gson = new Gson();
+            os.write(gson.toJson(dataTransferObject).getBytes());
+
+            Log.e(TAG, "Receiving");
+            InputStream is = socket.getInputStream();
+            String resultStr = convertStreamToString(is);
+            Log.e(TAG, "Service result:" + result);
+            DataTransferObject dataTransferObject1 = gson.fromJson(resultStr, DataTransferObject.class);
+
+            if (dataTransferObject1 != null) {
+                result = (stringToArray(dataTransferObject1.getData(), City[].class));
+            } else {
+                Log.e(TAG, "Result null");
+            }
+            is.close();
+            socket.close();
+
+        } catch (Exception e) {
+            Log.e(TAG, "Ops", e);
+        }
+        return result;
+    }
+
+    @Override
+    protected void onPostExecute(Object result) {
+        super.onPostExecute(result);
+        listener.listReceived(result);
     }
 }

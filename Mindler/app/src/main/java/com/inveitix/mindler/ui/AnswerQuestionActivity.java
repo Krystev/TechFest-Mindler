@@ -41,22 +41,7 @@ public class AnswerQuestionActivity extends AppCompatActivity {
         txtQuestion = (TextView) findViewById(R.id.txt_question);
         prgTime = (ProgressBar) findViewById( R.id.prg_time );
 
-        Timer t = new Timer();
-        t.schedule( new TimerTask() {
-            @Override
-            public void run() {
-                prgTime.setProgress(--value);
-                if(value == 0){
-                    runOnUiThread( new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText( AnswerQuestionActivity.this, "Your time is up", Toast.LENGTH_SHORT ).show();
-                        }
-                    } );
-                    changeQuestion( ++questionCount );
-                }
-            }
-        }, 10, 10 );
+        progressIndication();
 
         btnAnswer1 = (Button) findViewById( R.id.btn_answer_1 );
         btnAnswer1.setOnClickListener( new View.OnClickListener() {
@@ -117,6 +102,25 @@ public class AnswerQuestionActivity extends AppCompatActivity {
                 value = 1001;
             }
         } );
+    }
+
+    private void progressIndication() {
+        Timer t = new Timer();
+        t.schedule( new TimerTask() {
+            @Override
+            public void run() {
+                prgTime.setProgress(--value);
+                if(value == 0){
+                    runOnUiThread( new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText( AnswerQuestionActivity.this, "Your time is up", Toast.LENGTH_SHORT ).show();
+                        }
+                    } );
+                    changeQuestion( ++questionCount );
+                }
+            }
+        }, 10, 10 );
     }
 
     private void startColorAnimation(View v, boolean correct){
