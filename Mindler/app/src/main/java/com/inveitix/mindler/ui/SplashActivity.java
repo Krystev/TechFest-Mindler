@@ -1,32 +1,41 @@
 package com.inveitix.mindler.ui;
 
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
 import android.view.animation.BounceInterpolator;
 import android.view.animation.DecelerateInterpolator;
-import android.view.animation.ScaleAnimation;
-import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 
 import com.inveitix.mindler.R;
+import com.inveitix.mindler.interfaces.WebDataListener;
+import com.inveitix.mindler.cmn.City;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity implements WebDataListener{
 
+    private static final String TAG = "SplashActivity";
     @Bind(R.id.grp_footer)
     ViewGroup grpFooter;
     @Bind(R.id.btn_login)
     Button btnLogin;
+    List<City> cities;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +46,7 @@ public class SplashActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_login)
     public void onLoginClicked() {
-        startActivity(new Intent(this, MainActivity.class));
+       startActivity(new Intent(this, MainActivity.class));
     }
 
     @Override
@@ -77,5 +86,14 @@ public class SplashActivity extends AppCompatActivity {
             }
         });
         return moveAnimator;
+    }
+
+    @Override
+    public void cityListReceived(ArrayList<City> cities2) {
+        cities = cities2;
+        Log.e(TAG, "citiessssss" );
+        for (City city : cities) {
+            Log.e(TAG, "ct:" + city.getName());
+        }
     }
 }
