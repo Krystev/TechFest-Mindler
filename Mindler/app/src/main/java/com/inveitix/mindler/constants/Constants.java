@@ -1,4 +1,4 @@
-package com.inveitix.mindler;
+package com.inveitix.mindler.constants;
 
 /**
  * We place all general constants here

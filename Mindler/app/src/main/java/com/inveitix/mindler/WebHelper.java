@@ -2,6 +2,9 @@ package com.inveitix.mindler;
 
 import android.util.Log;
 
+import com.inveitix.mindler.interfaces.WebDataListener;
+import com.inveitix.mindler.tasks.WebDataTask;
+
 
 public class WebHelper {
     private static final String TAG = "WebHelper";

@@ -3,26 +3,20 @@ package com.inveitix.mindler.ui;
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
 import android.view.animation.BounceInterpolator;
 import android.view.animation.DecelerateInterpolator;
-import android.view.animation.ScaleAnimation;
-import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 
 import com.inveitix.mindler.R;
-import com.inveitix.mindler.WebDataListener;
-import com.inveitix.mindler.WebHelper;
+import com.inveitix.mindler.interfaces.WebDataListener;
 import com.inveitix.mindler.cmn.City;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import butterknife.Bind;

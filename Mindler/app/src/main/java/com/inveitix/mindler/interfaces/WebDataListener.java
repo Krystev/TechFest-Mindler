@@ -1,4 +1,4 @@
-package com.inveitix.mindler;
+package com.inveitix.mindler.interfaces;
 
 import com.inveitix.mindler.cmn.City;
 

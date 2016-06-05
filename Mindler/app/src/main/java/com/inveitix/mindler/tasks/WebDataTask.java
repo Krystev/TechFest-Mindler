@@ -1,4 +1,4 @@
-package com.inveitix.mindler;
+package com.inveitix.mindler.tasks;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -6,7 +6,10 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.inveitix.mindler.cmn.City;
+import com.inveitix.mindler.cmn.DataTransferObject;
+import com.inveitix.mindler.constants.Constants;
 import com.inveitix.mindler.constants.QuerryTypes;
+import com.inveitix.mindler.interfaces.WebDataListener;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,7 +19,6 @@ import java.io.OutputStream;
 import java.lang.reflect.Type;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.List;
 
 public class WebDataTask extends AsyncTask<Void, WebDataListener, ArrayList<City>> {
     private static final String TAG = "AsyncTask";
