@@ -13,6 +13,14 @@
         android:scaleType="centerCrop"
         android:src="@drawable/black_board2"/>
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:scaleType="centerCrop"
+        android:layout_height="340dp"
+        android:src="@drawable/down"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -33,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textColor="@android:color/white"
-            android:text="Current position 2 / 15"
+            android:text="Current position 1 / 1"
             android:textSize="14sp"/>
 
         <TextView
@@ -44,7 +52,7 @@
             android:gravity="center"
             android:padding="8dp"
             android:textColor="@android:color/white"
-            android:text="If the answer to this question is the second answer, which is the correct answer to this question?"
+            android:text="@string/question_1"
             android:textAlignment="center"
             android:textSize="20sp"/>
 
@@ -55,7 +63,7 @@
             android:layout_margin="4dp"
             android:padding="16dp"
             android:singleLine="true"
-            android:text="asddasddsddasdasadsdasdasd"
+            android:text="@string/question_1_answer_1"
             android:textSize="20sp"/>
 
         <Button
@@ -64,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:padding="16dp"
-            android:text="Answer 2"
+            android:text="@string/question_1_answer_2"
             android:textSize="20sp"/>
 
         <Button
@@ -73,7 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:padding="16dp"
-            android:text="Answer 3"
+            android:text="@string/question_1_answer_3"
             android:textSize="20sp"/>
 
         <Button
@@ -82,15 +90,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:padding="16dp"
-            android:text="Answer 4"
+            android:text="@string/question_1_answer_4"
             android:textSize="20sp"/>
+
     </LinearLayout>
-
-    <ImageView
-
-        android:layout_width="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_height="465dp"
-        android:src="@drawable/down"/>
 
 </RelativeLayout>
