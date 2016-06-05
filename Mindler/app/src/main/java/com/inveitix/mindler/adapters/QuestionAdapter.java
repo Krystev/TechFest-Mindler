@@ -1,7 +1,6 @@
-package com.inveitix.mindler.ui;
+package com.inveitix.mindler.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,8 +10,8 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.inveitix.mindler.R;
+import com.inveitix.mindler.cmn.Question;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
@@ -23,10 +22,10 @@ import butterknife.ButterKnife;
  */
 public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHolder> {
 
-    List<Questions> question;
+    List<Question> question;
     Context context;
 
-    public QuestionAdapter(Context context, List<Questions> question) {
+    public QuestionAdapter(Context context, List<Question> question) {
         this.question = question;
         this.context = context;
     }
