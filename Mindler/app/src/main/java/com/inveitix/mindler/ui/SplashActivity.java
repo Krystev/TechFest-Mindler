@@ -24,7 +24,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class SplashActivity extends AppCompatActivity implements WebDataListener{
+public class SplashActivity extends AppCompatActivity {
 
     private static final String TAG = "SplashActivity";
     @Bind(R.id.grp_footer)
@@ -57,7 +57,7 @@ public class SplashActivity extends AppCompatActivity implements WebDataListener
         alphaAnimator.setInterpolator(new DecelerateInterpolator());
 
         final ObjectAnimator moveAnimator = ObjectAnimator.ofFloat(grpFooter, "y", 600, 0);
-        moveAnimator.setDuration(3500);
+        moveAnimator.setDuration(2500);
         moveAnimator.setInterpolator(new BounceInterpolator());
         moveAnimator.addListener(new Animator.AnimatorListener() {
             @Override
@@ -81,10 +81,5 @@ public class SplashActivity extends AppCompatActivity implements WebDataListener
             }
         });
         return moveAnimator;
-    }
-
-    @Override
-    public void listReceived(Object result) {
-
     }
 }
