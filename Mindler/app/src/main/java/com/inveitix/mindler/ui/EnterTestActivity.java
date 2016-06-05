@@ -6,10 +6,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.inveitix.mindler.WebHelper;
 import com.inveitix.mindler.adapters.CustomSpinnerAdapter;
 import com.inveitix.mindler.R;
+import com.inveitix.mindler.interfaces.WebDataListener;
 
-public class EnterTestActivity extends AppCompatActivity {
+public class EnterTestActivity extends AppCompatActivity{
 
     private EditText edtStudentName;
     private Spinner spnCity;
@@ -27,10 +29,7 @@ public class EnterTestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView( R.layout.activity_enter_test);
-
         initSpinners();
-
-
     }
 
     private void initSpinners(){
@@ -54,6 +53,4 @@ public class EnterTestActivity extends AppCompatActivity {
                 new CustomSpinnerAdapter(this, R.layout.spinner_dropdown, teacherArray, "Изберете учител");
         spnTeacher.setAdapter(teacherAdapter);
     }
-
-
 }

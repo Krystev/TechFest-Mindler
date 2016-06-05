@@ -16,4 +16,20 @@
     <string name="be_the_best_in_your_class">Be the best in your class.</string>
     <string name="challenge_your_classmates">Challenge your classmates.</string>
     <string name="create_test">Create Game</string>
+    <string name="question_1">Българите били покръстени при:</string>
+    <string name="question_2">Какъв е броят на хромозомите в половите клетки на човека (в норма)?</string>
+    <string name="question_3">В кой от редовете е допусната правописна грешка?</string>
+    <string name="question_1_answer_1">Хан Борис</string>
+    <string name="question_1_answer_2">Хан Омуртаг</string>
+    <string name="question_1_answer_3">Хан Пресиян</string>
+    <string name="question_1_answer_4">Хан Симеон</string>
+    <string name="question_2_answer_1">46</string>
+    <string name="question_2_answer_2">32</string>
+    <string name="question_2_answer_3">23</string>
+    <string name="question_2_answer_4">64</string>
+    <string name="question_3_answer_1">лешник</string>
+    <string name="question_3_answer_2">водолас</string>
+    <string name="question_3_answer_3">железобетон</string>
+    <string name="question_3_answer_4">сватба</string>
+
 </resources>

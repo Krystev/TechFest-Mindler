@@ -19,10 +19,6 @@ import android.widget.Button;
 
 import com.inveitix.mindler.R;
 import com.inveitix.mindler.interfaces.WebDataListener;
-import com.inveitix.mindler.cmn.City;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -35,7 +31,6 @@ public class SplashActivity extends AppCompatActivity implements WebDataListener
     ViewGroup grpFooter;
     @Bind(R.id.btn_login)
     Button btnLogin;
-    List<City> cities;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,11 +84,7 @@ public class SplashActivity extends AppCompatActivity implements WebDataListener
     }
 
     @Override
-    public void cityListReceived(ArrayList<City> cities2) {
-        cities = cities2;
-        Log.e(TAG, "citiessssss" );
-        for (City city : cities) {
-            Log.e(TAG, "ct:" + city.getName());
-        }
+    public void listReceived(Object result) {
+
     }
 }
