@@ -15,8 +15,10 @@ import butterknife.OnClick;
 public class StartTestActivity extends AppCompatActivity {
 
 
-    @Bind(R.id.edt_teacher_name)
-    EditText edtTeacherName;
+    @Bind(R.id.edt_teacher_username)
+    EditText edtTeacherUsername;
+    @Bind(R.id.edt_teacher_pass)
+    EditText edtTeacherPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +29,12 @@ public class StartTestActivity extends AppCompatActivity {
 
     }
 
-    @OnClick(R.id.btn_enter_teacher)
+    @OnClick(R.id.btn_login_teacher)
     public void onEnterTeacherClick() {
-        if (edtTeacherName.length() == 0) {
-            edtTeacherName.setError("Please enter Teacher's name");
+        if (edtTeacherUsername.length() == 0) {
+            edtTeacherUsername.setError("Please enter correct Username");
+        } else  if (edtTeacherPassword.length() == 0) {
+            edtTeacherPassword.setError("Please enter correct Password");
         } else {
             startActivity(new Intent(this, ChooseTestActivity.class));
         }

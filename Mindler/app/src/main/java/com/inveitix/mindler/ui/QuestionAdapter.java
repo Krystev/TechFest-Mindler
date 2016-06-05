@@ -63,14 +63,21 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.ViewHo
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                    builder.setTitle(txtQuestion.getText().toString());
-                    builder.setMessage(question.get(position).getAnswerA() + "\n" +
-                            question.get(position).getAnswerB() + "\n" +
-                            question.get(position).getAnswerC() + "\n" +
-                            question.get(position).getAnswerD());
-                    builder.setCancelable(true);
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    LayoutInflater inflater = (LayoutInflater) context.getSystemService( Context.LAYOUT_INFLATER_SERVICE );
+                    builder.setView(inflater.inflate(R.layout.check_question, null));
                     builder.show();
+                    builder.setTitle(txtQuestion.getText().toString());
+                    builder.setCancelable(true);
+
+//                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+//                    builder.setTitle(txtQuestion.getText().toString());
+//                    builder.setMessage(question.get(position).getAnswerA() + "\n" +
+//                            question.get(position).getAnswerB() + "\n" +
+//                            question.get(position).getAnswerC() + "\n" +
+//                            question.get(position).getAnswerD());
+//                    builder.setCancelable(true);
+//                    builder.show();++
                 }
             });
         }
