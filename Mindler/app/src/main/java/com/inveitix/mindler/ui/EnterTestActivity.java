@@ -1,20 +1,12 @@
 package com.inveitix.mindler.ui;
 
-import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 
-import com.inveitix.mindler.CustomSpinnerAdapter;
-import com.inveitix.mindler.R;
-
+import com.inveitix.mindler.adapters.CustomSpinnerAdapter;
 import com.inveitix.mindler.R;
 
 public class EnterTestActivity extends AppCompatActivity {
