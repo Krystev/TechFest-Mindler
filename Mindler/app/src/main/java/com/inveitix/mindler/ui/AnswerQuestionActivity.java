@@ -142,7 +142,6 @@ public class AnswerQuestionActivity extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animator animation) {
                 setButtonsClickable(true);
-
                 changeQuestion(++questionCount);
             }
         });
