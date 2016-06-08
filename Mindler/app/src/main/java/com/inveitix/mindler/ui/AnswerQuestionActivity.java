@@ -32,6 +32,7 @@ public class AnswerQuestionActivity extends AppCompatActivity {
     int correctAnswer = 1;
     int questionCount = 1;
     int value = 1001;
+    Timer t;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,7 +42,7 @@ public class AnswerQuestionActivity extends AppCompatActivity {
         txtQuestion = (TextView) findViewById(R.id.txt_question);
 
         prgTime = (ProgressBar) findViewById(R.id.prg_time);
-        Timer t = new Timer();
+        t = new Timer();
         t.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -52,6 +53,7 @@ public class AnswerQuestionActivity extends AppCompatActivity {
                         public void run() {
                             Toast.makeText(AnswerQuestionActivity.this, "Your time is up", Toast.LENGTH_SHORT).show();
                             changeQuestion(++questionCount);
+
                         }
                     });
                     value = 1001;
@@ -182,6 +184,9 @@ public class AnswerQuestionActivity extends AppCompatActivity {
         Intent intent = new Intent(this, FinalResultActivity.class);
         String s = "Your result : " + correctQuetions + " / 3";
         intent.putExtra("result", s);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+        t.cancel();
+        finish();
     }
 }
