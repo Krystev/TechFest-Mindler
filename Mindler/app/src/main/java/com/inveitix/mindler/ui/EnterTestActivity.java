@@ -1,7 +1,9 @@
 package com.inveitix.mindler.ui;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -30,6 +32,15 @@ public class EnterTestActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView( R.layout.activity_enter_test);
         initSpinners();
+
+        btnEnter = (Button) findViewById(R.id.btn_enter_test);
+        btnEnter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(EnterTestActivity.this, AnswerQuestionActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     private void initSpinners(){

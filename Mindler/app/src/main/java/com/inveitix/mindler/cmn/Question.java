@@ -5,12 +5,21 @@ package com.inveitix.mindler.cmn;
  */
 public class Question {
 
-    String question;
-    String answerA;
-    String answerB;
-    String answerC;
-    String answerD;
+    private String question;
+    private String answerA;
+    private String answerB;
+    private String answerC;
+    private String answerD;
+    private int correctAnswer;
 
+    public Question(String question, String answerA, String answerB, String answerC, String answerD, int correctAnswer){
+        this.question = question;
+        this.answerA = answerA;
+        this.answerB = answerB;
+        this.answerC = answerC;
+        this.answerD = answerD;
+        this.correctAnswer = correctAnswer;
+    }
 
     public String getQuestion() {
         return question;
@@ -50,5 +59,13 @@ public class Question {
 
     public void setAnswerD(String answerD) {
         this.answerD = answerD;
+    }
+
+    public int getCorrectAnswer(){
+        return this.correctAnswer;
+    }
+
+    public void setCorrectAnswer(int correctAnswer){
+        this.correctAnswer = correctAnswer;
     }
 }

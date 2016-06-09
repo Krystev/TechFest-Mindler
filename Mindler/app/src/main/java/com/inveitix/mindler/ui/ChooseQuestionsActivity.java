@@ -31,42 +31,17 @@ public class ChooseQuestionsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_choose_questions);
         ButterKnife.bind(this);
 
-        Question exampleQuestion = new Question();
-        exampleQuestion.setQuestion("Кога е създаена България");
-        exampleQuestion.setAnswerA("681");
-        exampleQuestion.setAnswerB("345");
-        exampleQuestion.setAnswerC("1234");
-        exampleQuestion.setAnswerD("234");
-        Question exampleQuestion1 = new Question();
-        exampleQuestion1.setQuestion("Кога се е осовбодила България от Турско робство");
-        exampleQuestion1.setAnswerA("1876");
-        exampleQuestion1.setAnswerB("1923");
-        exampleQuestion1.setAnswerC("1879");
-        exampleQuestion1.setAnswerD("1944");
-        Question exampleQuestion2 = new Question();
-        exampleQuestion2.setQuestion("На коя дата честваме деня на Европа");
-        exampleQuestion2.setAnswerA("6 Септември");
-        exampleQuestion2.setAnswerB("6 Май");
-        exampleQuestion2.setAnswerC("9 Май");
-        exampleQuestion2.setAnswerD("9 Септември");
-        Question exampleQuestion3 = new Question();
-        exampleQuestion3.setQuestion("Управлението на кой владетел е наречено - Златен Век");
-        exampleQuestion3.setAnswerA("хан Крум");
-        exampleQuestion3.setAnswerB("хан Омуртаг");
-        exampleQuestion3.setAnswerC("цар Цимеон");
-        exampleQuestion3.setAnswerD("хан Аспарух");
-        Question exampleQuestion4 = new Question();
-        exampleQuestion4.setQuestion("Пъривте Български Закони са създадени при управлението на:");
-        exampleQuestion4.setAnswerA("хан Аспарух");
-        exampleQuestion4.setAnswerB("хан Крум");
-        exampleQuestion4.setAnswerC("княз Борис 1");
-        exampleQuestion4.setAnswerD("цар Симеон");
-        Question exampleQuestion5 = new Question();
-        exampleQuestion5.setQuestion("Кой е покръстил България");
-        exampleQuestion5.setAnswerA("хан Аспарух");
-        exampleQuestion5.setAnswerB("хан Крум");
-        exampleQuestion5.setAnswerC("княз Борис 1");
-        exampleQuestion5.setAnswerD("цар Симеон");
+        Question exampleQuestion = new Question("Кога е създаена България", "681", "345", "1234", "234", 1);
+        Question exampleQuestion1 = new Question("Кога се е осовбодила България от Турско робство", "1876", "1923", "1879",
+                "1878", 4);
+        Question exampleQuestion2 = new Question("На коя дата честваме деня на Европа", "6 Септември", "6 Май",
+                "9 Май", "9 Септември", 3);
+        Question exampleQuestion3 = new Question("Управлението на кой владетел е наречено - Златен Век", "хан Крум",
+                "хан Омуртаг", "цар Симеон", "хан Аспарух", 3);
+        Question exampleQuestion4 = new Question("Първите Български Закони са създадени при управлението на:",
+                "хан Аспарух", "хан Крум", "княз Борис 1","цар Симеон", 2);
+        Question exampleQuestion5 = new Question("Кой е покръстил България", "хан Аспарух", "хан Крум", "цар Симеон",
+                "княз Борис 1", 4);
 
         question.add(exampleQuestion);
         question.add(exampleQuestion1);
