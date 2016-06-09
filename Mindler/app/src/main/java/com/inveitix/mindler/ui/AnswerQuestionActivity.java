@@ -1,10 +1,18 @@
 package com.inveitix.mindler.ui;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.TransitionDrawable;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -12,25 +20,33 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.inveitix.mindler.R;
+import com.inveitix.mindler.WebHelper;
+import com.inveitix.mindler.cmn.Question;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.RunnableFuture;
 
 public class AnswerQuestionActivity extends AppCompatActivity {
 
-    private ProgressBar prgTime;
+    ProgressBar prgTime;
     TextView txtCurrentPosition;
     TextView txtQuestion;
-    private Button btnAnswer1;
-    private Button btnAnswer2;
-    private Button btnAnswer3;
-    private Button btnAnswer4;
+    Button btnAnswer1;
+    Button btnAnswer2;
+    Button btnAnswer3;
+    Button btnAnswer4;
 
     private int correctAnswer = 1;
-    private int questionCount = 1;
-    private int correntQuetions = 0;
+    private int currentQuestion = 0;
+    private int correctQuestionsCount = 0;
+
+    private List<Question> questions;
 
     private int value = 1001;
+    private boolean clicked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,20 +57,21 @@ public class AnswerQuestionActivity extends AppCompatActivity {
         txtQuestion = (TextView) findViewById(R.id.txt_question);
         prgTime = (ProgressBar) findViewById( R.id.prg_time );
 
+        questions = new ArrayList<Question>();
+
         progressIndication();
 
         btnAnswer1 = (Button) findViewById( R.id.btn_answer_1 );
         btnAnswer1.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                clicked = true;
                 if(correctAnswer == 1) {
                     startColorAnimation( btnAnswer1, true );
-                    correntQuetions++;
+                    correctQuestionsCount++;
                 } else {
-                    startColorAnimation( btnAnswer2, false );
+                    startColorAnimation( btnAnswer1, false );
                 }
-                changeQuestion( ++questionCount );
-                value = 1001;
             }
         } );
 
@@ -62,14 +79,13 @@ public class AnswerQuestionActivity extends AppCompatActivity {
         btnAnswer2.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                clicked = true;
                 if(correctAnswer == 2){
                     startColorAnimation( btnAnswer2, true );
-                    correntQuetions++;
+                    correctQuestionsCount++;
                 } else {
                     startColorAnimation( btnAnswer2, false );
                 }
-                changeQuestion( ++questionCount );
-                value = 1001;
             }
         } );
 
@@ -77,14 +93,13 @@ public class AnswerQuestionActivity extends AppCompatActivity {
         btnAnswer3.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                clicked = true;
                 if(correctAnswer == 3){
                     startColorAnimation( btnAnswer3, true );
-                    correntQuetions++;
+                    correctQuestionsCount++;
                 } else {
                     startColorAnimation( btnAnswer3, false );
                 }
-                changeQuestion( ++questionCount );
-                value = 1001;
             }
         } );
 
@@ -92,16 +107,19 @@ public class AnswerQuestionActivity extends AppCompatActivity {
         btnAnswer4.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                clicked = true;
                 if(correctAnswer == 4){
                     startColorAnimation( btnAnswer4, true );
-                    correntQuetions++;
+                    correctQuestionsCount++;
                 } else {
                     startColorAnimation( btnAnswer4, false );
                 }
-                changeQuestion( ++questionCount );
-                value = 1001;
             }
         } );
+
+        //TODO remove after filling from DB
+        addTestQuestions();
+        changeQuestion(0);
     }
 
     private void progressIndication() {
@@ -109,67 +127,86 @@ public class AnswerQuestionActivity extends AppCompatActivity {
         t.schedule( new TimerTask() {
             @Override
             public void run() {
-                prgTime.setProgress(--value);
+                if(!clicked){
+                    prgTime.setProgress(--value);
+                }
                 if(value == 0){
                     runOnUiThread( new Runnable() {
                         @Override
                         public void run() {
                             Toast.makeText( AnswerQuestionActivity.this, "Your time is up", Toast.LENGTH_SHORT ).show();
+                            changeQuestion( ++currentQuestion);
                         }
                     } );
-                    changeQuestion( ++questionCount );
                 }
             }
         }, 10, 10 );
     }
 
-    private void startColorAnimation(View v, boolean correct){
-        int colorStart = v.getSolidColor();
-        int colorEndRed = 0xFFFF0000;
-        int colorEndGreen = 0xff00ff00;
-
-        ValueAnimator colorAnimator = new ValueAnimator();
-        if(correct){
-            colorAnimator = ObjectAnimator.ofInt(v, "backgroundColor", colorStart, colorEndGreen);
-        } else {
-            colorAnimator = ObjectAnimator.ofInt(v, "backgroundColor", colorStart, colorEndRed);
+    private void startColorAnimation(final View v, boolean correct){
+        setButtonsClickable(false);
+        if (correct) {
+            v.setBackgroundResource(R.drawable.button_animation_green);
         }
-        colorAnimator.setDuration(1000);
-        colorAnimator.setEvaluator( new ArgbEvaluator() );
-        colorAnimator.setRepeatCount( 1 );
-        colorAnimator.setRepeatMode( ValueAnimator.REVERSE );
-        colorAnimator.start();
+        final TransitionDrawable td = (TransitionDrawable) v.getBackground();
+        td.startTransition(1500);
+        Handler h = new Handler();
+        h.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                td.reverseTransition(1000);
+            }
+        }, 1500);
+        h.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                changeQuestion(++currentQuestion);
+                setButtonsClickable(true);
+                v.setBackgroundResource(R.drawable.button_animation_red);
+            }
+        }, 3000);
+    }
+
+    private void setButtonsClickable(boolean b){
+        btnAnswer1.setClickable(b);
+        btnAnswer2.setClickable(b);
+        btnAnswer3.setClickable(b);
+        btnAnswer4.setClickable(b);
     }
 
     private void changeQuestion(int questionNumber){
-        if (questionCount < 3) {
-            if (questionNumber == 2) {
-                txtQuestion.setText( getString( R.string.question_2 ) );
-                btnAnswer1.setText( getString( R.string.question_2_answer_1 ) );
-                btnAnswer2.setText( getString( R.string.question_2_answer_2 ) );
-                btnAnswer3.setText( getString( R.string.question_2_answer_3 ) );
-                btnAnswer4.setText( getString( R.string.question_2_answer_4 ) );
-                correctAnswer = 3;
-            }
-
-            if (questionNumber == 3) {
-                txtQuestion.setText( getString( R.string.question_3 ) );
-                btnAnswer1.setText( getString( R.string.question_3_answer_1 ) );
-                btnAnswer2.setText( getString( R.string.question_3_answer_2 ) );
-                btnAnswer3.setText( getString( R.string.question_3_answer_3 ) );
-                btnAnswer4.setText( getString( R.string.question_3_answer_4 ) );
-                correctAnswer = 2;
-            }
-        } else {
+        if (questionNumber >= questions.size()){
             showResult();
+        } else {
+            value = 1001;
+            clicked = false;
+            Question q = questions.get(questionNumber);
+            txtQuestion.setText(q.getQuestion());
+            btnAnswer1.setText(q.getAnswerA());
+            btnAnswer2.setText(q.getAnswerB());
+            btnAnswer3.setText(q.getAnswerC());
+            btnAnswer4.setText(q.getAnswerD());
+            correctAnswer = q.getCorrectAnswer();
         }
     }
 
     private void showResult(){
-        txtQuestion.setText("Your result : " + correntQuetions + " / 3");
-        btnAnswer1.setText("");
-        btnAnswer2.setText("");
-        btnAnswer3.setText("");
-        btnAnswer4.setText("");
+        Intent i = new Intent(AnswerQuestionActivity.this, FinalResultActivity.class);
+        String s = "Your result : " + correctQuestionsCount + " / " + questions.size();
+        i.putExtra("result", s);
+        startActivity(i);
+    }
+
+    private void fillQuestionsFromDB(){
+        //TODO fill the array from DB
+    }
+
+    private void changeCurrentPosition(){
+        //TODO change current position based on other users
+    }
+
+    private void addTestQuestions(){
+        questions.add(new Question("2 + 2 = ?", "1", "2", "3", "4", 4));
+        questions.add(new Question("7 + 13 = ?", "20", "19", "21", "22", 1));
     }
 }
